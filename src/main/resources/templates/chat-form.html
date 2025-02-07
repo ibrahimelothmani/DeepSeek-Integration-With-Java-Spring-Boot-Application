@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <title>DeepSeek AI Chat</title>
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+
+        body {
+
+            background: linear-gradient(135deg, #667eea, #764ba2);
+
+            height: 100vh;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+        }
+
+        .chat-container {
+
+            width: 550px;
+
+            height: 400px;
+
+            padding: 20px;
+
+            background: #e6f7ff;
+
+            border-radius: 15px;
+
+            box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.3);
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: space-between;
+
+        }
+
+        .form-title {
+
+            font-size: 1.8rem;
+
+            font-weight: bold;
+
+            color: mediumblue;
+
+            text-align: center;
+
+            margin-bottom: 20px;
+
+        }
+
+        .form-label {
+
+            font-size: 1.5rem;
+
+            font-weight: normal;
+
+        }
+
+        .input-group {
+
+            display: flex;
+
+            align-items: center;
+
+        }
+
+        .form-control {
+
+            font-size: 1.2rem;
+
+            padding: 8px;
+
+            flex: 1;
+
+            overflow: auto;
+
+        }
+
+        .btn-send {
+
+            background: linear-gradient(135deg, #007bff, #0056b3);
+
+            border: none;
+
+            color: white;
+
+            font-size: 2rem;
+
+            width: 50px;
+
+            height: 50px;
+
+            border-radius: 50%;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            margin-left: 10px;
+
+            transition: background 0.3s ease-in-out, transform 0.2s;
+
+        }
+
+        .btn-send:hover {
+
+            background: linear-gradient(135deg, #0056b3, #007bff);
+
+            transform: scale(1.1);
+
+        }
+
+        textarea {
+
+            font-size: 1.4rem;
+
+            height: 120px;
+
+            resize: none;
+
+            color: blue;
+
+        }
+
+        body, .form-title, .form-label, .form-control, .btn-send, textarea {
+
+            font-family: 'Arial Nova', sans-serif;
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="chat-container">
+
+    <h2 class="form-title">DeepSeek Integration<br>With Java Spring Boot Application</h2>
+
+    <form th:action="@{/sendPrompt}" method="post">
+
+        <div class="mb-2">
+
+            <label for="chat" class="form-label">Enter your prompt:</label>
+
+            <div class="input-group">
+
+                <input type="text" id="chat" name="chat" class="form-control" placeholder="Ask me anything..." required>
+
+                <button type="submit" class="btn btn-send">SD</button>
+
+            </div>
+
+        </div>
+
+    </form>
+
+    <hr>
+
+    <label class="form-label text-secondary">Response:</label>
+
+    <textarea id="response" class="form-control" readonly th:text="${response}"></textarea>
+
+    <p class="text-danger mt-2" th:text="${error}"></p>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
